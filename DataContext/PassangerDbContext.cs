@@ -1,20 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PassangerApi.Models;
+using PassengerApi.Models;
 
-namespace PassangerApi.DataContext
+namespace PassengerApi.DataContext
 {
-    public class PassangerDbContext : DbContext
+    public class PassengerDbContext : DbContext
     {
-        public PassangerDbContext(DbContextOptions<PassangerDbContext> options) : base(options)
+        public PassengerDbContext(DbContextOptions<PassengerDbContext> options) : base(options)
         {
 
         }
-        public DbSet<Passanger> Passangers { get; set; }
+        public DbSet<Passenger> Passengers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Passanger>().HasData(
-                new Passanger()
+            modelBuilder.Entity<Passenger>().HasData(
+                new Passenger()
                 {
                     Id = 1,
                     Name = "Priyanka",

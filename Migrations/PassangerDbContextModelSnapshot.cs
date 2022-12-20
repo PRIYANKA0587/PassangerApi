@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PassangerApi.DataContext;
+using PassengerApi.DataContext;
 
 #nullable disable
 
-namespace PassangerApi.Migrations
+namespace PassengerApi.Migrations
 {
-    [DbContext(typeof(PassangerDbContext))]
-    partial class PassangerDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(PassengerDbContext))]
+    partial class PassengerDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,7 @@ namespace PassangerApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("PassangerApi.Models.Passanger", b =>
+            modelBuilder.Entity("PassengerApi.Models.Passenger", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace PassangerApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Passangers");
+                    b.ToTable("Passengers");
 
                     b.HasData(
                         new

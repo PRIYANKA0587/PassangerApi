@@ -1,30 +1,30 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PassangerApi.DataContext;
-using PassangerApi.Models;
-using PassangerApi.Repository.IRepository;
+using PassengerApi.DataContext;
+using PassengerApi.Models;
+using PassengerApi.Repository.IRepository;
 using System.Linq.Expressions;
 
-namespace PassangerApi.Repository
+namespace PassengerApi.Repository
 {
-    public class PassangerRepository : IPassangerRepository
+    public class PassengerRepository : IPassengerRepository
     {
-        private readonly PassangerDbContext _db;
+        private readonly PassengerDbContext _db;
         
-        public PassangerRepository(PassangerDbContext db)
+        public PassengerRepository(PassengerDbContext db)
         {
             this._db = db;
            
         }
 
-        public async Task CreateAsync(Passanger entity)
+        public async Task CreateAsync(Passenger entity)
         {
-            await _db.Passangers.AddAsync(entity);
+            await _db.Passengers.AddAsync(entity);
             await SaveAsync();
         }
 
-        public async Task<List<Passanger>> GetAllAsync(Expression<Func<Passanger, bool>> filter = null)
+        public async Task<List<Passenger>> GetAllAsync(Expression<Func<Passenger, bool>> filter = null)
         {
-            IQueryable<Passanger> query = _db.Passangers;
+            IQueryable<Passenger> query = _db.Passengers;
             if(filter !=null)
             {
                 query = query.Where(filter);
@@ -32,9 +32,9 @@ namespace PassangerApi.Repository
             return await query.ToListAsync();
         }
 
-        public async Task<Passanger> GetByIdAsync(Expression<Func<Passanger, bool>> filter = null)
+        public async Task<Passenger> GetByIdAsync(Expression<Func<Passenger, bool>> filter = null)
         {
-            IQueryable<Passanger> query = _db.Passangers;
+            IQueryable<Passenger> query = _db.Passengers;
             if(filter!=null)
             {
                 query = query.Where(filter);
@@ -42,9 +42,9 @@ namespace PassangerApi.Repository
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task RemoveAsync(Passanger entity)
+        public async Task RemoveAsync(Passenger entity)
         {
-            _db.Passangers.Remove(entity);
+            _db.Passengers.Remove(entity);
             await SaveAsync();
         }
 
@@ -53,9 +53,9 @@ namespace PassangerApi.Repository
             await _db.SaveChangesAsync();   
         }
 
-        public async Task UpdateAsync(Passanger entity)
+        public async Task UpdateAsync(Passenger entity)
         {
-            _db.Passangers.Update(entity);
+            _db.Passengers.Update(entity);
             await SaveAsync();
         }
     }

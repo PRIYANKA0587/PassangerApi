@@ -1,17 +1,17 @@
-﻿using PassangerApi.Models;
+﻿using PassengerApi.Models;
 using System.Linq.Expressions;
 
-namespace PassangerApi.Repository.IRepository
+namespace PassengerApi.Repository.IRepository
 {
-    public interface IPassangerRepository
+    public interface IPassengerRepository
     {
-        Task<List<Passanger>> GetAllAsync(Expression<Func<Passanger, bool>> filter = null);
+        Task<List<Passenger>> GetAllAsync(Expression<Func<Passenger, bool>> filter = null);
             
-        Task<Passanger> GetByIdAsync(Expression<Func<Passanger, bool>> filter =null);
+        Task<Passenger> GetByIdAsync(Expression<Func<Passenger, bool>> filter =null);
 
-        Task CreateAsync(Passanger entity);
-        Task UpdateAsync(Passanger entity);
-        Task RemoveAsync(Passanger entity);
+        Task CreateAsync(Passenger entity);
+        Task UpdateAsync(Passenger entity);
+        Task RemoveAsync(Passenger entity);
         Task SaveAsync();
 
     }

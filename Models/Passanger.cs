@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PassangerApi.Models
+namespace PassengerApi.Models
 {
-    public class Passanger
+    public class Passenger
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

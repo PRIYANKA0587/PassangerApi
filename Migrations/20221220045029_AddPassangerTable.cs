@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace PassangerApi.Migrations
+namespace PassengerApi.Migrations
 {
-    public partial class AddPassangerTable : Migration
+    public partial class AddPassengerTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Passangers",
+                name: "Passengers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -25,14 +25,14 @@ namespace PassangerApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Passangers", x => x.Id);
+                    table.PrimaryKey("PK_Passengers", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Passangers");
+                name: "Passengers");
         }
     }
 }

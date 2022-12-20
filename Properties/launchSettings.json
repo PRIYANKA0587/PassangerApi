@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "PassangerApi": {
+    "PassengerApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

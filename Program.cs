@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using PassangerApi;
-using PassangerApi.DataContext;
-using PassangerApi.Repository;
-using PassangerApi.Repository.IRepository;
+using PassengerApi;
+using PassengerApi.DataContext;
+using PassengerApi.Repository;
+using PassengerApi.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,14 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
-builder.Services.AddDbContext<PassangerDbContext>(option => 
+builder.Services.AddDbContext<PassengerDbContext>(option => 
 { 
 option.UseSqlServer(builder.Configuration.GetConnectionString("conStr"));
 });
 
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 
-builder.Services.AddScoped<IPassangerRepository, PassangerRepository>();
+builder.Services.AddScoped<IPassengerRepository, PassengerRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

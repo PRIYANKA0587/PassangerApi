@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace PassangerApi.Migrations
+namespace PassengerApi.Migrations
 {
-    public partial class SeedPassangerUpdated : Migration
+    public partial class SeedPassengerUpdated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.UpdateData(
-                table: "Passangers",
+                table: "Passengers",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "CreatedDate", "UpdatedDate" },
@@ -20,7 +20,7 @@ namespace PassangerApi.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.UpdateData(
-                table: "Passangers",
+                table: "Passengers",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "CreatedDate", "UpdatedDate" },

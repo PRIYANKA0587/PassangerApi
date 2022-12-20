@@ -3,23 +3,23 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts;
-using PassangerApi.DataContext;
-using PassangerApi.Models;
-using PassangerApi.Models.Dtos;
-using PassangerApi.Repository;
-using PassangerApi.Repository.IRepository;
+using PassengerApi.DataContext;
+using PassengerApi.Models;
+using PassengerApi.Models.Dtos;
+using PassengerApi.Repository;
+using PassengerApi.Repository.IRepository;
 using System.Collections.Generic;
 
-namespace PassangerApi.Controllers
+namespace PassengerApi.Controllers
 {
-    [Route("api/Passanger")]
+    [Route("api/Passenger")]
     [ApiController]
-    public class PassangerController : ControllerBase
+    public class PassengerController : ControllerBase
     {
-        private readonly IPassangerRepository _repo;
-       // private readonly PassangerDbContext _context;
+        private readonly IPassengerRepository _repo;
+       // private readonly PassengerDbContext _context;
         private readonly IMapper _mapper;
-        public PassangerController(IPassangerRepository repo, IMapper mapper)
+        public PassengerController(IPassengerRepository repo, IMapper mapper)
         {
             // _context = context;
             _repo = repo;
@@ -28,46 +28,46 @@ namespace PassangerApi.Controllers
         }
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<PassangerDto>>> GetAllPassangers()
+        public async Task<ActionResult<IEnumerable<PassengerDto>>> GetAllPassengers()
         {
-            IEnumerable<Passanger> passangerList = await _repo.GetAllAsync();
-            return Ok(passangerList);
+            IEnumerable<Passenger> passengerList = await _repo.GetAllAsync();
+            return Ok(passengerList);
 
         }
 
-        [HttpGet("{id:int}", Name = "GetPassanger")]
+        [HttpGet("{id:int}", Name = "GetPassenger")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async  Task<ActionResult<PassangerDto>> GetPassangerById(int id)
+        public async  Task<ActionResult<PassengerDto>> GetPassengerById(int id)
         {
             if (id == 0)
             {
                 return BadRequest();
             }
-            var passanger = await  _repo.GetByIdAsync(x => x.Id == id);
-            if (passanger == null)
+            var passenger = await  _repo.GetByIdAsync(x => x.Id == id);
+            if (passenger == null)
             {
                 return NotFound();
             }
-            return Ok(_mapper.Map<PassangerDto>(passanger));
+            return Ok(_mapper.Map<PassengerDto>(passenger));
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         
-        public async Task<ActionResult<PassangerCreateDto>> CreatePassanger([FromBody]PassangerCreateDto createDto)
+        public async Task<ActionResult<PassengerCreateDto>> CreatePassenger([FromBody]PassengerCreateDto createDto)
         {
             if (await _repo.GetByIdAsync(u => u.Name.ToLower() == createDto.Name.ToLower()) !=null) 
             {
-                ModelState.AddModelError("Custom Error", "Passanger is already exists");
+                ModelState.AddModelError("Custom Error", "Passenger is already exists");
                 return BadRequest();
             }
-            Passanger model = _mapper.Map<Passanger>(createDto);
+            Passenger model = _mapper.Map<Passenger>(createDto);
            
            await _repo.CreateAsync(model);
-            return CreatedAtRoute("GetPassanger", new {id = model.Id}, model);
+            return CreatedAtRoute("GetPassenger", new {id = model.Id}, model);
 
         }
 
@@ -81,12 +81,12 @@ namespace PassangerApi.Controllers
             {
                 return BadRequest();
             }
-            var passanger = await _repo.GetByIdAsync(u => u.Id == id);
-            if(passanger==null)
+            var passenger = await _repo.GetByIdAsync(u => u.Id == id);
+            if(passenger==null)
             {
                 return NotFound();
             }
-           await  _repo.RemoveAsync(passanger);
+           await  _repo.RemoveAsync(passenger);
             
             return NoContent();
         }
@@ -94,13 +94,13 @@ namespace PassangerApi.Controllers
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdatePassanger(int id, [FromBody] PassangerUpdateDto updateDto)
+        public async Task<IActionResult> UpdatePassenger(int id, [FromBody] PassengerUpdateDto updateDto)
         {
             if(updateDto==null || id != updateDto.Id)
             {
                 return BadRequest();
             }
-            Passanger model = _mapper.Map<Passanger>(updateDto);
+            Passenger model = _mapper.Map<Passenger>(updateDto);
             
             await _repo.UpdateAsync(model);
             

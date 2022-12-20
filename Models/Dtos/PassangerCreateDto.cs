@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace PassangerApi.Models.Dtos
+namespace PassengerApi.Models.Dtos
 {
-    public class PassangerCreateDto
+    public class PassengerCreateDto
     {
        
         [Required(ErrorMessage = "Enter your Name")]

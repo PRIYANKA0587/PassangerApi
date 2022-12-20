@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
-using PassangerApi.Models;
-using PassangerApi.Models.Dtos;
+using PassengerApi.Models;
+using PassengerApi.Models.Dtos;
 
-namespace PassangerApi
+namespace PassengerApi
 {
     public class MappingConfig :Profile
     {
         public MappingConfig()
         {
-            CreateMap<Passanger, PassangerDto>().ReverseMap();
-            CreateMap<Passanger, PassangerCreateDto>().ReverseMap();
-            CreateMap<Passanger,PassangerUpdateDto>().ReverseMap();
+            CreateMap<Passenger, PassengerDto>().ReverseMap();
+            CreateMap<Passenger, PassengerCreateDto>().ReverseMap();
+            CreateMap<Passenger,PassengerUpdateDto>().ReverseMap();
         }
     }
 }
